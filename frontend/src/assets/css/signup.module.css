@@ -1,0 +1,10 @@
+.custom_bg{
+    background: white;
+    border: 3px solid whitesmoke;
+    padding: 20px 40px;
+    border-radius: 25px;
+}
+
+.custom_bg:hover{
+    background: whitesmoke;
+}

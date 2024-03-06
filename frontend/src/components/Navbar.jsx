@@ -13,13 +13,12 @@ function NavScrollExample() {
     return (
         <Navbar expand="lg" className="bg-body-tertiary">
             <Container fluid>
-                <Navbar.Brand href="#">Dynamic Nav</Navbar.Brand>
+                <Navbar.Brand href="#">Nextjs-FastAPI Auth</Navbar.Brand>
                 <Navbar.Toggle aria-controls="navbarScroll" />
                 <Navbar.Collapse id="navbarScroll">
+                    {/* ===================> left nav <========================  */}
                     <Nav
                         className="me-auto my-2 my-lg-0"
-                        style={{ maxHeight: '100px' }}
-                        navbarScroll
                     >
 
                         <li>
@@ -61,7 +60,7 @@ function NavScrollExample() {
                             <Link className="nav-link disabled" href="/not-in"> disabled</Link>
                         </li>
                     </Nav>
-                    <Form className="d-flex">
+                    {/* <Form className="d-flex">
                         <Form.Control
                             type="search"
                             placeholder="Search"
@@ -69,7 +68,24 @@ function NavScrollExample() {
                             aria-label="Search"
                         />
                         <Button variant="outline-success">Search</Button>
-                    </Form>
+                    </Form> */}
+
+                    {/* ===================> right nav <========================  */}
+                    <Nav className="me-2 my-2 my-lg-0"
+                    >
+                        <li>
+                            <Link className="nav-link" href="/signup"> Sign up</Link>
+                        </li>
+                        <li>
+                            <Link className="nav-link" href="/not-in"> Login</Link>
+                        </li>
+                        <li>
+                            <Link className="nav-link" href="/not-in"> user</Link>
+                        </li>
+                        <li>
+                            <Link className="nav-link" href="/not-in"> Logout</Link>
+                        </li>
+                    </Nav>
                 </Navbar.Collapse>
             </Container>
         </Navbar>
