@@ -7,32 +7,18 @@ import { useState } from 'react';
 import style from "@/assets/css/signup.module.css";
 
 import EventHandling from './EventHandling';
+import apiService from '@/services/apiService';
 
-function Signup() {
-    // const { handleChange, clickOnsubmit, values, errors } = EventHandling();
-    const [values, setValues] = useState({
-        first_name: "",
-        last_name: "",
-        email: "",
-        password: "",
-        password2: "",
-    });
+export default function Signup() {
+    const { handleChange, clickOnsubmit, values, errors } = EventHandling();
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setValues({
-            ...values,
-            [name]: value,
-        });
-        // console.log('you entered ', values)
-    };
-
-    const clickOnsubmit = (e) => {
-        e.preventDefault();
-        // console.log("your submission : ", values);
-        // setErrors(ValidateText(values));
-        // setIsSubmitting(true);
-    };
+    // const clickOnsubmit = async (e) => {
+    //     e.preventDefault();
+    //     // console.log("your submission : ", values);
+    //     // setErrors(ValidateText(values));
+    //     // setIsSubmitting(true);
+    //     const response = await apiService.get('users/');
+    // };
 
     return (
         <Container >
@@ -67,6 +53,9 @@ function Signup() {
                                 placeholder="Enter email"
                                 onChange={handleChange}
                             />
+                            {errors.email && (
+                                <p className="text-danger text-center">{errors.email}</p>
+                            )}
                             <Form.Text className="text-muted">
                                 We'll never share your email with anyone else.
                             </Form.Text>
@@ -79,6 +68,9 @@ function Signup() {
                                 placeholder="Password"
                                 onChange={handleChange}
                             />
+                            {errors.password && (
+                                <p className="text-danger text-center">{errors.password}</p>
+                            )}
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="formBasicPassword2">
                             <Form.Label>Re-enter Password <span className="asteric">*</span></Form.Label>
@@ -87,6 +79,9 @@ function Signup() {
                                 placeholder="Type password again"
                                 onChange={handleChange}
                             />
+                            {errors.password2 && (
+                                <p className="text-danger text-center">{errors.password2}</p>
+                            )}
                         </Form.Group>
                         <Button variant="primary" type="submit">
                             Submit
@@ -101,4 +96,3 @@ function Signup() {
     )
 }
 
-export default Signup
