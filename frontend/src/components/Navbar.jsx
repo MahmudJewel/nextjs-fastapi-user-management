@@ -9,7 +9,8 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 
 import Link from 'next/link'
 
-function NavScrollExample() {
+function NavScrollExample({loginToken}) {
+    console.log('Login Toke ====> ', loginToken)
     return (
         <Navbar expand="lg" className="bg-body-tertiary">
             <Container fluid>
@@ -77,13 +78,14 @@ function NavScrollExample() {
                             <Link className="nav-link" href="/signup"> Sign up</Link>
                         </li>
                         <li>
-                            <Link className="nav-link" href="/not-in"> Login</Link>
+                            <Link className="nav-link" href="/login"> Login</Link>
                         </li>
+
                         <li>
                             <Link className="nav-link" href="/not-in"> user</Link>
                         </li>
                         <li>
-                            <Link className="nav-link" href="/not-in"> Logout</Link>
+                            <Link className="nav-link" href="/logout"> Logout</Link>
                         </li>
                     </Nav>
                 </Navbar.Collapse>

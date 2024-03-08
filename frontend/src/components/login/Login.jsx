@@ -4,16 +4,17 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 // css 
 import style from "@/assets/css/signup.module.css";
+import EventHandler from './EventHandler';
 
-import EventHandling from './EventHandling';
+// import EventHandling from './EventHandling';
 
-export default function Signup() {
-    const { handleChange, clickOnsubmit, values, errors, isSubmitting } = EventHandling();
-
+export default function Login() {
+    // const { handleChange, clickOnsubmit, values, errors, isSubmitting } = EventHandling();
+    const { clickOnsubmit, handleChange, unauthorized } = EventHandler()
     return (
         <Container >
             {/* ========== alert messages ================== */}
-            {Object.keys(errors).length === 0 && isSubmitting && <>
+            {/* {Object.keys(errors).length === 0 && isSubmitting && <>
                 <Row>
                     <Col md={3}></Col>
                     <Col md={6}>
@@ -26,31 +27,20 @@ export default function Signup() {
                     </Col>
                     <Col md={3} ></Col>
                 </Row>
-            </>}
-            
+            </>} */}
+
+            {unauthorized &&
+                <>
+                    <p className='text-center'>Not authorized</p>
+                </>
+            }
             <Row className='mt-5'>
-                <h2 className='text-center mb-4'>Create your account</h2>
+                <h2 className='text-center mb-4'>Login to your account</h2>
                 <Col md={3}>
                 </Col>
                 <Col md={6}>
                     <Form className={style.custom_bg} onSubmit={clickOnsubmit}>
-                        <Form.Group className="mb-3" controlId="formFirstName">
-                            <Form.Label>First name</Form.Label>
-                            <Form.Control type="text"
-                                name='first_name'
-                                placeholder="Enter first name"
-                                onChange={handleChange}
-                            />
-                        </Form.Group>
 
-                        <Form.Group className="mb-3" controlId="formLastName">
-                            <Form.Label>Last name</Form.Label>
-                            <Form.Control type="text"
-                                name='last_name'
-                                placeholder="Enter last name"
-                                onChange={handleChange}
-                            />
-                        </Form.Group>
 
                         <Form.Group className="mb-3" controlId="formBasicEmail">
                             <Form.Label>Email address <span className="asteric">*</span> </Form.Label>
@@ -59,12 +49,9 @@ export default function Signup() {
                                 placeholder="Enter email"
                                 onChange={handleChange}
                             />
-                            {errors.email && (
+                            {/* {errors.email && (
                                 <p className="text-danger text-center">{errors.email}</p>
-                            )}
-                            <Form.Text className="text-muted">
-                                We'll never share your email with anyone else.
-                            </Form.Text>
+                            )} */}
                         </Form.Group>
 
                         <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -74,23 +61,13 @@ export default function Signup() {
                                 placeholder="Password"
                                 onChange={handleChange}
                             />
-                            {errors.password && (
+                            {/* {errors.password && (
                                 <p className="text-danger text-center">{errors.password}</p>
-                            )}
+                            )} */}
                         </Form.Group>
-                        <Form.Group className="mb-3" controlId="formBasicPassword2">
-                            <Form.Label>Re-enter Password <span className="asteric">*</span></Form.Label>
-                            <Form.Control type="password"
-                                name='password2'
-                                placeholder="Type password again"
-                                onChange={handleChange}
-                            />
-                            {errors.password2 && (
-                                <p className="text-danger text-center">{errors.password2}</p>
-                            )}
-                        </Form.Group>
+
                         <Button variant="primary" type="submit">
-                            Submit
+                            Login
                         </Button>
                     </Form>
                 </Col>
