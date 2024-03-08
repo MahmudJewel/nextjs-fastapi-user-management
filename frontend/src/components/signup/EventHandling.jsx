@@ -2,7 +2,6 @@
 import { useState, useEffect } from "react";
 import ValidateText from "./ValidateText";
 import apiService from '@/services/apiService';
-import { redirect } from "next/navigation";
 import { useRouter } from 'next/navigation'
 
 const EventHandling = () => {
@@ -30,32 +29,32 @@ const EventHandling = () => {
     // console.log("your submission : ", values);
     setErrors(ValidateText(values));
     setIsSubmitting(true);
-    fetchData();
-
     console.log('Errors => ', errors, Object.keys(errors).length)
   };
 
   const fetchData = async () => {
-    // if (Object.keys(errors).length === 0 && isSubmitting) {
-    //   const response = await apiService.get('users/');
-    //   console.log('response ===> ', response);
-    // }
-    const response = await apiService.get('users/');
-    console.log('response ===> ', response);
+    if (Object.keys(errors).length === 0 && isSubmitting) {
+      const data = {
+        "first_name": values.first_name,
+        "last_name": values.last_name,
+        "email": values.email,
+        "password": values.password
+      }
+      const response = await apiService.post('users/', JSON.stringify(data));
+      console.log('response ===> ', response);
+    }
   }
 
   useEffect(
     () => {
       if (Object.keys(errors).length === 0 && isSubmitting) {
-        // submitForm();
-        // const response = await apiService.get('users/');
-        // console.log('response', response)
-        router.push('/');
+        // fetchData();
+        // router.push('/');
       }
     },
     [errors]
   );
-  return { handleChange, clickOnsubmit, values, errors };
+  return { handleChange, clickOnsubmit, values, errors, isSubmitting };
 };
 
 export default EventHandling;

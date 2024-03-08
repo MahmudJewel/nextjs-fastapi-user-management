@@ -2,26 +2,31 @@
 import { Col, Container, Row } from 'react-bootstrap'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { useState } from 'react';
 // css 
 import style from "@/assets/css/signup.module.css";
 
 import EventHandling from './EventHandling';
-import apiService from '@/services/apiService';
 
 export default function Signup() {
-    const { handleChange, clickOnsubmit, values, errors } = EventHandling();
-
-    // const clickOnsubmit = async (e) => {
-    //     e.preventDefault();
-    //     // console.log("your submission : ", values);
-    //     // setErrors(ValidateText(values));
-    //     // setIsSubmitting(true);
-    //     const response = await apiService.get('users/');
-    // };
+    const { handleChange, clickOnsubmit, values, errors, isSubmitting } = EventHandling();
 
     return (
         <Container >
+            {/* ========== alert messages ================== */}
+            {Object.keys(errors).length === 0 && isSubmitting && <>
+                <Row>
+                    <Col md={3}></Col>
+                    <Col md={6}>
+                        <div className="alert alert-success text-center">
+                            <div className="container d-flex justify-content-between">
+                                <b className='text-center'>Account created successfully</b>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        </div>
+                    </Col>
+                    <Col md={3} ></Col>
+                </Row>
+            </>}
             <Row className='mt-5'>
                 <h2 className='text-center mb-4'>Create your account</h2>
                 <Col md={3}>
