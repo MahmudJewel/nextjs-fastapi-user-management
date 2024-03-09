@@ -8,9 +8,13 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 
 import Link from 'next/link'
+import { getAccessToken } from '@/lib/actions';
 
-function NavScrollExample({loginToken}) {
-    console.log('Login Toke ====> ', loginToken)
+async function NavScrollExample({ loginToken }) {
+    console.log('Login Token from navbar ====> ', loginToken)
+    // const loginToken2 = await getAccessToken()
+    // console.log('accesstoken from layout ===================> :', loginToken2);
+
     return (
         <Navbar expand="lg" className="bg-body-tertiary">
             <Container fluid>
@@ -74,19 +78,29 @@ function NavScrollExample({loginToken}) {
                     {/* ===================> right nav <========================  */}
                     <Nav className="me-2 my-2 my-lg-0"
                     >
-                        <li>
-                            <Link className="nav-link" href="/signup"> Sign up</Link>
-                        </li>
-                        <li>
-                            <Link className="nav-link" href="/login"> Login</Link>
-                        </li>
+                        {
+                            loginToken ? (
+                                <>
+                                    <li>
+                                        <Link className="nav-link" href="/not-in"> user</Link>
+                                    </li>
+                                    <li>
+                                        <Link className="nav-link" href="/logout"> Logout</Link>
+                                    </li>
+                                </>
+                            ) : (
+                                <>
+                                    <li>
+                                        <Link className="nav-link" href="/signup"> Sign up</Link>
+                                    </li>
+                                    <li>
+                                        <Link className="nav-link" href="/login"> Login</Link>
+                                    </li>
+                                </>
+                            )
+                        }
 
-                        <li>
-                            <Link className="nav-link" href="/not-in"> user</Link>
-                        </li>
-                        <li>
-                            <Link className="nav-link" href="/logout"> Logout</Link>
-                        </li>
+
                     </Nav>
                 </Navbar.Collapse>
             </Container>

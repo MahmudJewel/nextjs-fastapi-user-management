@@ -3,8 +3,8 @@
 import { cookies } from 'next/headers';
 
 // export async function handleLogin(userId: string, accessToken: string, refreshToken: string) {
-export async function handleLogin(accessToken: string) {
-
+export async function handleLogin(accessToken) {
+    console.log('actions=========================> ')
     // cookies().set('session_userid', userId, {
     //     httpOnly: true,
     //     // secure: process.env.NODE_ENV === 'production',
@@ -39,7 +39,7 @@ export async function resetAuthCookies() {
 // Get data
 export async function getAccessToken() {
     const accessToken = cookies().get('session_access_token')?.value
-    console.log('From actions => ', accessToken);
+    console.log('token From actions ===============> ', accessToken);
     return accessToken ? accessToken : null
 }
 

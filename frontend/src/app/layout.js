@@ -16,8 +16,10 @@ export const metadata = {
   description: "Developed by Mahmud",
 };
 
-export default function RootLayout({ children }) {
-  const loginToken = getAccessToken()
+export default async function RootLayout({ children }) {
+  const loginToken = await getAccessToken()
+  console.log('accesstoken from layout ===================> :', loginToken);
+
   return (
     <html lang="en">
       <body className={inter.className}>
