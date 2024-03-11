@@ -6,11 +6,13 @@ import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-
+import { usePathname } from 'next/navigation';
 import Link from 'next/link'
 import { getAccessToken } from '@/lib/actions';
 
 async function NavScrollExample({ loginToken }) {
+    const pathname = usePathname();
+	const isActive = (path) => path === pathname;
     console.log('Login Token from navbar ====> ', loginToken)
     // const loginToken2 = await getAccessToken()
     // console.log('accesstoken from layout ===================> :', loginToken2);
@@ -27,10 +29,10 @@ async function NavScrollExample({ loginToken }) {
                     >
 
                         <li>
-                            <Link className="nav-link" href="/"> Home</Link>
+                            <Link className="nav-link {isActive('/') ? 'nav-active' : ''}" href="/" > Home</Link>
                         </li>
                         <li>
-                            <Link className="nav-link" href="/page-1"> Page-1</Link>
+                            <Link className="nav-link"  href="/page-1"> Page-1</Link>
                         </li>
                         <li>
                             <Link className="nav-link" href="/not-in"> Not-found</Link>
@@ -82,7 +84,7 @@ async function NavScrollExample({ loginToken }) {
                             loginToken ? (
                                 <>
                                     <li>
-                                        <Link className="nav-link" href="/not-in"> user</Link>
+                                        <Link className="nav-link" href="/me"> user</Link>
                                     </li>
                                     <li>
                                         <Link className="nav-link" href="/logout"> Logout</Link>
@@ -109,3 +111,4 @@ async function NavScrollExample({ loginToken }) {
 }
 
 export default NavScrollExample;
+
