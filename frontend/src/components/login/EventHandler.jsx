@@ -30,9 +30,9 @@ const EventHandler = () => {
 
     const fetchData = async () => {
         const response = await apiService.post('login/', JSON.stringify(values));
-        console.log('response ===> ', response);
+        // console.log('response ===> ', response);
         if (response.access_token) {
-            console.log('type ========> ',typeof(response.access_token))
+            // console.log('type ========> ',typeof(response.access_token))
             // handleLogin(response.user.pk, response.access, response.refresh);
             const tkn=await handleLogin(response.access_token);
             // router.push('/')

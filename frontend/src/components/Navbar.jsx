@@ -13,7 +13,7 @@ import { getAccessToken } from '@/lib/actions';
 async function NavScrollExample({ loginToken }) {
     const pathname = usePathname();
 	const isActive = (path) => path === pathname;
-    console.log('Login Token from navbar ====> ', loginToken)
+    // console.log('Login Token from navbar ====> ', loginToken)
     // const loginToken2 = await getAccessToken()
     // console.log('accesstoken from layout ===================> :', loginToken2);
 

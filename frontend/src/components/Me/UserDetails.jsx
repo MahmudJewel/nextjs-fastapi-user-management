@@ -5,9 +5,10 @@ import { Col, Container, Row } from 'react-bootstrap'
 
 async function UserDetails() {
     const tkn = await getAccessToken()
-    console.log('from user details ==> ', tkn)
+    // console.log('from user details ==> ', tkn)
     const user = await apiService.getMe('users/me/', tkn)
-    console.log('==============================================>', user);
+    console.log('From me ==============================================>', user);
+    
     return (
         <Container>
             <Row>
