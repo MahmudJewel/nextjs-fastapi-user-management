@@ -1,15 +1,14 @@
 "use client"
 import { useState, useEffect } from "react";
-import apiService from '@/services/apiService';
-import { useRouter } from 'next/navigation'
 import { handleLogin } from "@/lib/actions";
+import { postMethod } from "@/services/apiService";
+import { useRouter } from "next/navigation";
 
 const EventHandler = () => {
     const [values, setValues] = useState({
         email: "",
         password: ""
     });
-    const [isSubmitted, setIsSubmitted] = useState(false);
     const [unauthorized, setUnauthorized] = useState(false);
     const router = useRouter()
 
@@ -25,17 +24,14 @@ const EventHandler = () => {
         e.preventDefault();
         // console.log("your submission : ", values);
         fetchData()
-        setIsSubmitted(true);
     };
 
     const fetchData = async () => {
-        const response = await apiService.post('login/', JSON.stringify(values));
-        // console.log('response ===> ', response);
+        const response = await postMethod('login/', JSON.stringify(values));
+
         if (response.access_token) {
-            // console.log('type ========> ',typeof(response.access_token))
-            // handleLogin(response.user.pk, response.access, response.refresh);
             const tkn=await handleLogin(response.access_token);
-            // router.push('/')
+            router.push('/')
         } else {
             // setErrors(response.non_field_errors);
             console.log('Errors of login ==>');
@@ -52,7 +48,7 @@ const EventHandler = () => {
     //     },
     //     []
     //   );
-    return { handleChange, clickOnsubmit, values, isSubmitted, unauthorized };
+    return { handleChange, clickOnsubmit, values, unauthorized };
 };
 
 export default EventHandler;

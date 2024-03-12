@@ -1,12 +1,14 @@
 import React from 'react'
-import apiService from '@/services/apiService'
+import apiService, { getMethod } from '@/services/apiService'
 import { getAccessToken } from '@/lib/actions'
 import { Col, Container, Row } from 'react-bootstrap'
 
 async function UserDetails() {
     const tkn = await getAccessToken()
     // console.log('from user details ==> ', tkn)
-    const user = await apiService.getMe('users/me/', tkn)
+    // const user = await apiService.getMe('users/me/', tkn)
+    // const user = await apiService.get('users/me/')
+    const user = await getMethod('users/me/')
     console.log('From me ==============================================>', user);
     
     return (
