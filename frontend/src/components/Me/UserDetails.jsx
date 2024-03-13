@@ -9,7 +9,7 @@ async function UserDetails() {
     // const user = await apiService.getMe('users/me/', tkn)
     // const user = await apiService.get('users/me/')
     const user = await getMethod('users/me/')
-    console.log('From me ==============================================>', user);
+    // console.log('From me ==============================================>', user);
     
     return (
         <Container>

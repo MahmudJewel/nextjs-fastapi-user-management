@@ -1,22 +1,44 @@
 import { NextResponse } from 'next/server'
-import { getAccessToken } from './lib/actions';
-
+import { getAccessToken } from './lib/actions'; // getAccessToken is a user defined function which returns aceess token
 
 export async function middleware(request) {
-    console.log('Hello middlewares ============');
-    const user = await getAccessToken();
-    // if logged in, he can access '/me' routes
-    if (user) {
-        return NextResponse.next()
+    try {
+        console.log('Hello middlewares ============');
+        const isAuthenticated = await getAccessToken();
+
+        if (isAuthenticated) {
+            // Redirect logged-in users from the '/login' or '/signup' page to '/me'
+            if (request.nextUrl.pathname.startsWith('/login') || request.nextUrl.pathname.startsWith('/signup')) {
+                console.log('Redirecting authenticated user to /me');
+                return NextResponse.redirect(new URL('/', request.url));
+            }
+            // Allow access to '/me' routes for authenticated users
+            return NextResponse.next();
+        } else {
+            // Allow access to the signup page for unauthenticated users
+            if (request.nextUrl.pathname.startsWith('/signup')) {
+                console.log('Allowing unauthenticated user to /signup');
+                return NextResponse.next();
+            }
+            // Redirect unauthenticated users to the login page
+            if (!request.nextUrl.pathname.startsWith('/login')) {
+                console.log('Redirecting unauthenticated user to /login');
+                return NextResponse.redirect(new URL('/login', request.url));
+            }
+            // Allow access to the login page
+            return NextResponse.next();
+        }
+    } catch (error) {
+        console.error('Error in authentication middleware:', error);
+        // Handle error gracefully
+        return NextResponse.error();
     }
-    // if not logged in, he can redirect '/login' page
-    return NextResponse.redirect(new URL('/login', request.url))
 }
 
-// protecting the routes 
+// Protected routes 
 export const config = {
-    matcher: ['/me'],
-}
+    matcher: ['/me', '/login', '/signup']
+};
 
 // export const config = {
 //     matcher: ["/((?!.+\\.[\\w]+$|_next).*)", "/", "/(api|trpc)(.*)"],
