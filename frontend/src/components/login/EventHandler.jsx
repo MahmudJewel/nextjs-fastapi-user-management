@@ -31,7 +31,7 @@ const EventHandler = () => {
 
         if (response.access_token) {
             const tkn=await handleLogin(response.access_token);
-            router.push('/')
+            router.push('/me')
         } else {
             // setErrors(response.non_field_errors);
             console.log('Errors of login ==>');

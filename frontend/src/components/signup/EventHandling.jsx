@@ -1,7 +1,7 @@
 "use client"
 import { useState, useEffect } from "react";
 import ValidateText from "./ValidateText";
-import apiService from '@/services/apiService';
+import { postMethod } from '@/services/apiService';
 import { useRouter } from 'next/navigation'
 
 const EventHandling = () => {
@@ -40,7 +40,7 @@ const EventHandling = () => {
         "email": values.email,
         "password": values.password
       }
-      const response = await apiService.post('users/', JSON.stringify(data));
+      const response = await postMethod('users/', JSON.stringify(data));
       console.log('response ===> ', response);
     }
   }
