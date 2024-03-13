@@ -8,14 +8,10 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link'
-import { getAccessToken } from '@/lib/actions';
 
-async function NavScrollExample({ loginToken }) {
+function NavScrollExample({ loginToken }) {
     const pathname = usePathname();
 	const isActive = (path) => path === pathname;
-    // console.log('Login Token from navbar ====> ', loginToken)
-    // const loginToken2 = await getAccessToken()
-    // console.log('accesstoken from layout ===================> :', loginToken2);
 
     return (
         <Navbar expand="lg" className="bg-body-tertiary">

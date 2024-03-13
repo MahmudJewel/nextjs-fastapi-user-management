@@ -17,3 +17,7 @@ export async function middleware(request) {
 export const config = {
     matcher: ['/me'],
 }
+
+// export const config = {
+//     matcher: ["/((?!.+\\.[\\w]+$|_next).*)", "/", "/(api|trpc)(.*)"],
+// };

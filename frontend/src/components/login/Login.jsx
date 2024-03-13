@@ -10,7 +10,7 @@ import EventHandler from './EventHandler';
 
 export default function Login() {
     // const { handleChange, clickOnsubmit, values, errors, isSubmitting } = EventHandling();
-    const { clickOnsubmit, handleChange, unauthorized } = EventHandler()
+    const { clickOnsubmit, handleChange, errors, unauthorized } = EventHandler()
     return (
         <Container >
             {/* ========== alert messages ================== */}
@@ -61,9 +61,9 @@ export default function Login() {
                                 placeholder="Password"
                                 onChange={handleChange}
                             />
-                            {/* {errors.password && (
-                                <p className="text-danger text-center">{errors.password}</p>
-                            )} */}
+                            {errors && (
+                                <p className="text-danger text-center">{errors.detail}</p>
+                            )}
                         </Form.Group>
 
                         <Button variant="primary" type="submit">

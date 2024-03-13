@@ -42,7 +42,6 @@ export async function getAccessToken() {
     // console.log('token From actions ===============> ', accessToken);
     return accessToken ? accessToken : null
 }
-
 // export async function getUserId() {
 //     const userId = cookies().get('session_userid')?.value
 //     return userId ? userId : null

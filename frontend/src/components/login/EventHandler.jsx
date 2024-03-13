@@ -1,6 +1,6 @@
 "use client"
 import { useState, useEffect } from "react";
-import { handleLogin } from "@/lib/actions";
+import { getAccessToken, handleLogin } from "@/lib/actions";
 import { postMethod } from "@/services/apiService";
 import { useRouter } from "next/navigation";
 
@@ -9,10 +9,11 @@ const EventHandler = () => {
         email: "",
         password: ""
     });
+    const [errors, setErrors] = useState(null);
     const [unauthorized, setUnauthorized] = useState(false);
     const router = useRouter()
 
-    const handleChange = async (e) => {
+    const handleChange = (e) => {
         const { name, value } = e.target;
         setValues({
             ...values,
@@ -30,11 +31,13 @@ const EventHandler = () => {
         const response = await postMethod('login/', JSON.stringify(values));
 
         if (response.access_token) {
-            const tkn=await handleLogin(response.access_token);
+            const tkn = await handleLogin(response.access_token);
             router.push('/me')
         } else {
-            // setErrors(response.non_field_errors);
-            console.log('Errors of login ==>');
+            setErrors(response)
+            // console.log('erroes from else ==> ', errors)
+            // 
+            // console.log('Errors of login ==>');
         }
     }
 
@@ -48,7 +51,7 @@ const EventHandler = () => {
     //     },
     //     []
     //   );
-    return { handleChange, clickOnsubmit, values, unauthorized };
+    return { handleChange, clickOnsubmit, values, errors, unauthorized };
 };
 
 export default EventHandler;
