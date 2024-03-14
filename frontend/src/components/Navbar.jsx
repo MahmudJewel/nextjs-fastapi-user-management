@@ -6,12 +6,14 @@ import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import Link from 'next/link'
 
 function NavScrollExample({ loginToken }) {
     const pathname = usePathname();
-	const isActive = (path) => path === pathname;
+    // const isActive = (path) => path === pathname;
+
+    const router = useRouter()
 
     return (
         <Navbar expand="lg" className="bg-body-tertiary">
@@ -24,11 +26,14 @@ function NavScrollExample({ loginToken }) {
                         className="me-auto my-2 my-lg-0"
                     >
 
-                        <li>
+                        {/* <li>
                             <Link className="nav-link {isActive('/') ? 'nav-active' : ''}" href="/" > Home</Link>
+                        </li> */}
+                        <li>
+                            <Link className={pathname == "/" ? "active-nav nav-link" : "nav-link"} href="/" > Home</Link>
                         </li>
                         <li>
-                            <Link className="nav-link"  href="/page-1"> Page-1</Link>
+                            <Link className={pathname == "/page-1" ? "active-nav nav-link" : "nav-link"} href="/page-1"> Page-1</Link>
                         </li>
                         <li>
                             <Link className="nav-link" href="/not-in"> Not-found</Link>
@@ -80,19 +85,19 @@ function NavScrollExample({ loginToken }) {
                             loginToken ? (
                                 <>
                                     <li>
-                                        <Link className="nav-link" href="/me"> user</Link>
+                                        <Link className={pathname == "/me" ? "active-nav nav-link" : "nav-link"} href="/me"> user</Link>
                                     </li>
                                     <li>
-                                        <Link className="nav-link" href="/logout"> Logout</Link>
+                                        <Link className={pathname == "/logout" ? "active-nav nav-link" : "nav-link"} href="/logout"> Logout</Link>
                                     </li>
                                 </>
                             ) : (
                                 <>
                                     <li>
-                                        <Link className="nav-link" href="/signup"> Sign up</Link>
+                                        <Link className={pathname == "/signup" ? "active-nav nav-link" : "nav-link"} href="/signup"> Sign up</Link>
                                     </li>
                                     <li>
-                                        <Link className="nav-link" href="/login"> Login</Link>
+                                        <Link className={pathname == "/login" ? "active-nav nav-link" : "nav-link"} href="/login"> Login</Link>
                                     </li>
                                 </>
                             )

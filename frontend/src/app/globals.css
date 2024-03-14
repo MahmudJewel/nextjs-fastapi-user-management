@@ -1,9 +1,21 @@
 /* ============== utilities =======================  */
-.asteric{
+.asteric {
     color: red;
 }
 
+/* ============== navbar =============================== */
+.active-nav,
+.active-nav:active,
+.active-nav:focus {
+    background: #3b71ca;
+    color: white;
+    border: 2px solid #3b71ca !important;
+    border-radius: 15px;
+}
 
-
-
-
+.nav-link:hover {
+    background: white;
+    color: black;
+    border: 2px solid #3b71ca !important;
+    border-radius: 15px;
+}
