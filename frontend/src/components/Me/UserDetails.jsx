@@ -1,27 +1,44 @@
 import React from 'react'
 import apiService, { getMethod } from '@/services/apiService'
 import { getAccessToken } from '@/lib/actions'
-import { Col, Container, Row } from 'react-bootstrap'
+import { Card, CardBody, Col, Container, Row, Table } from 'react-bootstrap'
 
 async function UserDetails() {
-    const tkn = await getAccessToken()
-    // console.log('from user details ==> ', tkn)
-    // const user = await apiService.getMe('users/me/', tkn)
-    // const user = await apiService.get('users/me/')
     const user = await getMethod('users/me/')
-    // console.log('From me ==============================================>', user);
-    
+
     return (
         <Container>
             <Row>
+                <h2 className='text-center'>My information</h2>
+                <br />
                 <Col md={3}></Col>
                 <Col md={6}>
-                    {user && 
+                    {user &&
                         <>
-                        First name: {user.first_name} <br />
-                        Last name: {user.last_name} <br />
-                        Email: {user.email} <br />
-                        Role: {user.role} <br />
+                            <Card>
+                                <CardBody>
+                                    <Table>
+                                        <tbody>
+                                            <tr>
+                                                <td>First name:</td>
+                                                <td>{user.first_name}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Last name:</td>
+                                                <td>{user.last_name}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Email:</td>
+                                                <td>{user.email}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Role:</td>
+                                                <td>{user.role}</td>
+                                            </tr>
+                                        </tbody>
+                                    </Table>
+                                </CardBody>
+                            </Card>
                         </>
                     }
                 </Col>

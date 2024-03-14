@@ -13,8 +13,6 @@ function NavScrollExample({ loginToken }) {
     const pathname = usePathname();
     // const isActive = (path) => path === pathname;
 
-    const router = useRouter()
-
     return (
         <Navbar expand="lg" className="bg-body-tertiary">
             <Container fluid>
