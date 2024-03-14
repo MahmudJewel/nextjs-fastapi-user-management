@@ -61,3 +61,28 @@ export async function postMethod(url, data) {
     })
 
 }
+
+export async function patchMethod(url, data) {
+    const accessToken = await getAccessToken()
+    return new Promise((resolve, reject) => {
+        // fetch(`http://127.0.0.1:8000/${url}`, {
+        fetch(`${process.env.NEXT_PUBLIC_API_HOST}${url}`, {
+            method: 'PATCH',
+            body: data,
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                Authorization: accessToken ? 'Bearer ' + accessToken : null,
+            }
+        })
+            .then(response => response.json())
+            .then((json) => {
+                // console.log('Response:', json);
+                resolve(json);
+            })
+            .catch((error => {
+                reject(error);
+            }))
+    })
+
+}

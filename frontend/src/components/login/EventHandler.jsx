@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { postMethod } from "@/services/apiService";
 import { useRouter } from "next/navigation";
+import { handleLogin } from "@/lib/actions";
 
 const EventHandler = () => {
     const [values, setValues] = useState({
@@ -29,7 +30,7 @@ const EventHandler = () => {
         const response = await postMethod('login/', JSON.stringify(values));
 
         if (response.access_token) {
-            const tkn = await handleLogin(response.access_token);
+            const tkn = await handleLogin(response.access_token); // save token on cookies.
             router.push('/me')
         } else {
             setErrors(response)

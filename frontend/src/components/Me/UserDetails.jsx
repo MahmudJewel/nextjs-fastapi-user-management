@@ -2,6 +2,7 @@ import React from 'react'
 import apiService, { getMethod } from '@/services/apiService'
 import { getAccessToken } from '@/lib/actions'
 import { Card, CardBody, Col, Container, Row, Table } from 'react-bootstrap'
+import Link from 'next/link'
 
 async function UserDetails() {
     const user = await getMethod('users/me/')
@@ -43,6 +44,11 @@ async function UserDetails() {
                     }
                 </Col>
                 <Col md={3}></Col>
+                <br /><br />
+
+                <Col className='text-center mt-3'>
+                        <Link href='/me/update' className='btn btn-primary'>Update info</Link>
+                </Col>
             </Row>
         </Container>
     )
