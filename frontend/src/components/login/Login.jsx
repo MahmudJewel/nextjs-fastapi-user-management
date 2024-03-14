@@ -5,16 +5,16 @@ import Form from 'react-bootstrap/Form';
 // css 
 import style from "@/assets/css/signup.module.css";
 import EventHandler from './EventHandler';
+import EventHandling from '../signup/EventHandling';  // from signup page
 
-// import EventHandling from './EventHandling';
 
 export default function Login() {
-    // const { handleChange, clickOnsubmit, values, errors, isSubmitting } = EventHandling();
-    const { clickOnsubmit, handleChange, errors, unauthorized } = EventHandler()
+    const { isSubmitting } = EventHandling();
+    const { clickOnsubmit, handleChange, errors } = EventHandler()
     return (
         <Container >
             {/* ========== alert messages ================== */}
-            {/* {Object.keys(errors).length === 0 && isSubmitting && <>
+            {isSubmitting && <>
                 <Row>
                     <Col md={3}></Col>
                     <Col md={6}>
@@ -27,14 +27,9 @@ export default function Login() {
                     </Col>
                     <Col md={3} ></Col>
                 </Row>
-            </>} */}
+            </>}
 
-            {unauthorized &&
-                <>
-                    <p className='text-center'>Not authorized</p>
-                </>
-            }
-            <Row className='mt-5'>
+            <Row className='mt-3'>
                 <h2 className='text-center mb-4'>Login to your account</h2>
                 <Col md={3}>
                 </Col>
@@ -75,7 +70,7 @@ export default function Login() {
                 </Col>
             </Row>
 
-        </Container>
+        </Container >
     )
 }
 

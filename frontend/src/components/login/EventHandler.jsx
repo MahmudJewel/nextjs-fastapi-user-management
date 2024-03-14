@@ -1,6 +1,5 @@
 "use client"
 import { useState, useEffect } from "react";
-import { getAccessToken, handleLogin } from "@/lib/actions";
 import { postMethod } from "@/services/apiService";
 import { useRouter } from "next/navigation";
 
@@ -10,7 +9,6 @@ const EventHandler = () => {
         password: ""
     });
     const [errors, setErrors] = useState(null);
-    const [unauthorized, setUnauthorized] = useState(false);
     const router = useRouter()
 
     const handleChange = (e) => {
@@ -35,9 +33,6 @@ const EventHandler = () => {
             router.push('/me')
         } else {
             setErrors(response)
-            // console.log('erroes from else ==> ', errors)
-            // 
-            // console.log('Errors of login ==>');
         }
     }
 
@@ -51,7 +46,7 @@ const EventHandler = () => {
     //     },
     //     []
     //   );
-    return { handleChange, clickOnsubmit, values, errors, unauthorized };
+    return { handleChange, clickOnsubmit, values, errors };
 };
 
 export default EventHandler;

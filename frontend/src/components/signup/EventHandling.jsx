@@ -29,7 +29,7 @@ const EventHandling = () => {
     // console.log("your submission : ", values);
     setErrors(ValidateText(values));
     setIsSubmitting(true);
-    console.log('Errors => ', errors, Object.keys(errors).length)
+    console.log('Errors => ', isSubmitting)
   };
 
   const fetchData = async () => {
@@ -40,16 +40,30 @@ const EventHandling = () => {
         "email": values.email,
         "password": values.password
       }
-      const response = await postMethod('users/', JSON.stringify(data));
-      console.log('response ===> ', response);
+      try {
+        const response = await postMethod('users/', JSON.stringify(data));
+        console.log('response from try ===> ', response);
+        // exist user error 
+        if(response.detail){
+          setErrors(response)
+          // console.log('user exists')
+        }
+        else{
+          router.push('/login');
+        }
+      }
+      catch (e) {
+        console.log('error ',e)
+      }
     }
   }
 
   useEffect(
     () => {
       if (Object.keys(errors).length === 0 && isSubmitting) {
-        // fetchData();
-        // router.push('/');
+        fetchData();
+        // console.log('errors ==> ', errors)
+        // router.push('/login');
       }
     },
     [errors]

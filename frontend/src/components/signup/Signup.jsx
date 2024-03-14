@@ -13,7 +13,7 @@ export default function Signup() {
     return (
         <Container >
             {/* ========== alert messages ================== */}
-            {Object.keys(errors).length === 0 && isSubmitting && <>
+            {/* {Object.keys(errors).length === 0 && isSubmitting && <>
                 <Row>
                     <Col md={3}></Col>
                     <Col md={6}>
@@ -26,7 +26,7 @@ export default function Signup() {
                     </Col>
                     <Col md={3} ></Col>
                 </Row>
-            </>}
+            </>} */}
             
             <Row className='mt-5'>
                 <h2 className='text-center mb-4'>Create your account</h2>
@@ -61,6 +61,9 @@ export default function Signup() {
                             />
                             {errors.email && (
                                 <p className="text-danger text-center">{errors.email}</p>
+                            )}
+                            {errors.detail && (
+                                <p className="text-danger text-center">{errors.detail}</p>
                             )}
                             <Form.Text className="text-muted">
                                 We'll never share your email with anyone else.
