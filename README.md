@@ -45,8 +45,8 @@ Full-Stack app with user management
 * Logout
 * User details page
 * custom form validation on login and signup
+* User can update information.
 * Active navbar
-
 
 <!-- =========================================== Back-end ========================== -->
 
