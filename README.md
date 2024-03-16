@@ -119,5 +119,27 @@ $ pnpm run dev # make sure to run the back-end first on http://127.0.0.1:8000/
 ```
 Congrates!!! you are done...
 
+## Screenshot
+<p>
+    Alert for required fields
+</p>
+![1 3-required messages](https://github.com/MahmudJewel/nextjs-fastapi-user-management/assets/35461355/e6076053-4c81-4d98-b839-47a6c4b8961b)
+
+<p>
+    Alert for user created.
+</p>
+![2-alert for acc created](https://github.com/MahmudJewel/nextjs-fastapi-user-management/assets/35461355/fd8aa98f-bcc5-45b1-b9e3-05be246b2bd5)
+
+<p>
+    Alert for user exists
+</p>
+![1 1-user exists messages](https://github.com/MahmudJewel/nextjs-fastapi-user-management/assets/35461355/956b4618-1a54-47f3-8981-0fc323366c27)
+
+<p>
+    Alert for password
+</p>
+![1 2-password not matched](https://github.com/MahmudJewel/nextjs-fastapi-user-management/assets/35461355/e5cfa540-f850-4846-b186-1d9a8c3ee93f)
+
+
 ### Happy Coding
 
