@@ -1,11 +1,11 @@
 # User management using Nextjs and FastAPI
 Full-Stack app with user management
 <p>
-    <a href="https://github.com/MahmudJewel/nextjs-fastapi-authentication/fork">
-        <img src="https://img.shields.io/github/forks/MahmudJewel/nextjs-fastapi-authentication.svg?style=social&label=Fork" />
+    <a href="https://github.com/MahmudJewel/nextjs-fastapi-user-management/fork">
+        <img src="https://img.shields.io/github/forks/MahmudJewel/nextjs-fastapi-user-management.svg?style=social&label=Fork" />
     </a>
-    <a href="https://github.com/MahmudJewel/nextjs-fastapi-authentication/fork">
-        <img src="https://img.shields.io/github/stars/MahmudJewel/nextjs-fastapi-authentication.svg?style=social&label=Stars" />
+    <a href="https://github.com/MahmudJewel/nextjs-fastapi-user-management/fork">
+        <img src="https://img.shields.io/github/stars/MahmudJewel/nextjs-fastapi-user-management.svg?style=social&label=Stars" />
     </a>
     <!-- <a href="https://github.com/MahmudJewel/nextjs-fastapi-authentication/fork">
         <img src="https://img.shields.io/nuget/dt/Azylee.Core.svg" />
@@ -14,7 +14,7 @@ Full-Stack app with user management
 <p>
     If the repo is helpful, please give a star and fork it.
 </p>
-<a href="https://github.com/MahmudJewel/nextjs-fastapi-authentication/fork">
+<a href="https://github.com/MahmudJewel/nextjs-fastapi-user-management/fork">
     Click here to download/fork the repository
 </a>
 
@@ -76,12 +76,12 @@ Full-Stack app with user management
 ## Back-end
 The first thing to do is to clone the repository:
 ```sh
-$ https://github.com/MahmudJewel/nextjs-fastapi-authentication
+$ https://github.com/MahmudJewel/nextjs-fastapi-user-management
 ```
 
 Create a virtual environment to install dependencies in and activate it:
 ```sh
-$ cd nextjs-fastapi-authentication
+$ cd nextjs-fastapi-user-management
 $ cd backend
 $ python -m venv venv
 $ source venv/bin/activate
@@ -99,7 +99,7 @@ session operates in a virtual environment set up by `virtualenv2`.
 
 Once `pip` has finished downloading the dependencies:
 ```sh
-(venv)$ alembic upgrade head
+(venv)$ alembic upgrade head  # database migration
 (venv)$ uvicorn app.main:app --reload # backend server will be => http://127.0.0.1:8000/
 ```
 ## Front-end
@@ -123,21 +123,26 @@ Congrates!!! you are done...
 <p>
     Alert for required fields
 </p>
+<!-- <img src="https://github.com/MahmudJewel/nextjs-fastapi-user-management/assets/35461355/e6076053-4c81-4d98-b839-47a6c4b8961b"> -->
+
 ![1 3-required messages](https://github.com/MahmudJewel/nextjs-fastapi-user-management/assets/35461355/e6076053-4c81-4d98-b839-47a6c4b8961b)
 
 <p>
     Alert for user created.
 </p>
+
 ![2-alert for acc created](https://github.com/MahmudJewel/nextjs-fastapi-user-management/assets/35461355/fd8aa98f-bcc5-45b1-b9e3-05be246b2bd5)
 
 <p>
     Alert for user exists
 </p>
+
 ![1 1-user exists messages](https://github.com/MahmudJewel/nextjs-fastapi-user-management/assets/35461355/956b4618-1a54-47f3-8981-0fc323366c27)
 
 <p>
     Alert for password
 </p>
+
 ![1 2-password not matched](https://github.com/MahmudJewel/nextjs-fastapi-user-management/assets/35461355/e5cfa540-f850-4846-b186-1d9a8c3ee93f)
 
 
