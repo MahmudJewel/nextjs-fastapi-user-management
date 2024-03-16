@@ -17,6 +17,7 @@
 ## Features:
 * Login and logout using cookies and session
 * Create user account
+* User can update his information
 
 # Tech Stack
 ## Front-end

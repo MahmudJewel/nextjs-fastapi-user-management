@@ -42,14 +42,15 @@ const EventHandling = () => {
       }
       try {
         const response = await postMethod('users/', JSON.stringify(data));
-        console.log('response from try ===> ', response);
         // exist user error 
         if(response.detail){
+          console.log('if errors ==> ',response.detail);
           setErrors(response)
           // console.log('user exists')
         }
         else{
-          router.push('/login');
+          // console.log('Created ==> ');
+          router.push(`/login?email=${data.email}`)
         }
       }
       catch (e) {

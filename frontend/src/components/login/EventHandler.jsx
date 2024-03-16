@@ -31,7 +31,7 @@ const EventHandler = () => {
 
         if (response.access_token) {
             const tkn = await handleLogin(response.access_token); // save token on cookies.
-            router.push('/me')
+            // router.push('/me')
         } else {
             setErrors(response)
         }

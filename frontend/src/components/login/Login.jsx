@@ -5,22 +5,27 @@ import Form from 'react-bootstrap/Form';
 // css 
 import style from "@/assets/css/signup.module.css";
 import EventHandler from './EventHandler';
-import EventHandling from '../signup/EventHandling';  // from signup page
+import { useSearchParams } from 'next/navigation';
 
 
 export default function Login() {
-    const { isSubmitting } = EventHandling();
     const { clickOnsubmit, handleChange, errors } = EventHandler()
+
+    // if comes from signup, it will show notification as account created.
+    const searchParam = useSearchParams()
+    const mail = searchParam.get('email')
+    console.log('login ====> ', searchParam.get('email'))
+
     return (
         <Container >
             {/* ========== alert messages ================== */}
-            {isSubmitting && <>
+            {mail && <>
                 <Row>
                     <Col md={3}></Col>
                     <Col md={6}>
                         <div className="alert alert-success text-center">
                             <div className="container d-flex justify-content-between">
-                                <b className='text-center'>Account created successfully</b>
+                                <b className='text-center'>Account created for {mail}</b>
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>
                         </div>
