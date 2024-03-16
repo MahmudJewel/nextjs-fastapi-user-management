@@ -1,4 +1,5 @@
 # User management using Nextjs and FastAPI
+Full-Stack app with user management
 <p>
     <a href="https://github.com/MahmudJewel/nextjs-fastapi-authentication/fork">
         <img src="https://img.shields.io/github/forks/MahmudJewel/nextjs-fastapi-authentication.svg?style=social&label=Fork" />
@@ -6,9 +7,12 @@
     <a href="https://github.com/MahmudJewel/nextjs-fastapi-authentication/fork">
         <img src="https://img.shields.io/github/stars/MahmudJewel/nextjs-fastapi-authentication.svg?style=social&label=Stars" />
     </a>
-    <a href="https://github.com/MahmudJewel/nextjs-fastapi-authentication/fork">
+    <!-- <a href="https://github.com/MahmudJewel/nextjs-fastapi-authentication/fork">
         <img src="https://img.shields.io/nuget/dt/Azylee.Core.svg" />
-    </a>
+    </a> -->
+</p>
+<p>
+    If the repo is helpful, please give a star and fork it.
 </p>
 <a href="https://github.com/MahmudJewel/nextjs-fastapi-authentication/fork">
     Click here to download/fork the repository
@@ -36,6 +40,7 @@
 * Signup
     * if user exists, will show the error messages
     * custom validated text for required fields like email, password
+    * If user is created, will redirect to the login page and show the alert message.
 * Login
 * Logout
 * User details page
@@ -114,7 +119,5 @@ $ pnpm run dev # make sure to run the back-end first on http://127.0.0.1:8000/
 ```
 Congrates!!! you are done...
 
-#Happy Coding
-
-From ==> **Mahmud**
+### Happy Coding
 
